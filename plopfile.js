@@ -1,4 +1,4 @@
-module.exports = function (plop) {
+export default function (plop) {
   // BỘ TẠO MODULE (MODULE GENERATOR)
   plop.setGenerator('module', {
     description: 'Create an Enterprise Module (5 files)',
