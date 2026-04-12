@@ -1,10 +1,10 @@
 export const APP_CONFIG = {
-  // Dùng chung cho toàn bộ hệ thống
+  // Shared across the entire system
   COMMON: {
     PAGINATION: {
       DEFAULT_PAGE: 1,
       DEFAULT_LIMIT: 10,
-      MAX_LIMIT: 100, // Chặn client request quá nhiều dữ liệu
+      MAX_LIMIT: 100, // Prevents client from requesting too much data
     },
     UPLOAD: {
       MAX_IMAGE_SIZE_MB: 5,
@@ -28,11 +28,11 @@ export const APP_CONFIG = {
     AUTH_WINDOW_MINUTES: 1,
     AUTH_MAX_REQUESTS: 5,
   },
-  // Sau này có các module khác:
+  // Future modules:
   // COURSE: { MAX_VIDEO_SIZE_MB: 500 }
 };
 
-// Định nghĩa các kênh gửi OTP
+// Defines OTP delivery channels
 export const OTP_CHANNELS = {
   EMAIL: 'EMAIL',
   SMS: 'SMS',

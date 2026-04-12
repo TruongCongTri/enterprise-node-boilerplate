@@ -1,31 +1,31 @@
-// Định nghĩa danh sách TẤT CẢ các tên trường (Input Fields) dùng cho thông báo lỗi
+// Defines ALL field names used for UI labels and validation messages
 export const FIELDS = {
   // --- AUTH & USER ---
   EMAIL: 'Email',
-  PHONE: 'Số điện thoại',
-  PASSWORD: 'Mật khẩu',
-  CURRENT_PASSWORD: 'Mật khẩu hiện tại',
-  NEW_PASSWORD: 'Mật khẩu mới',
-  CONFIRM_PASSWORD: 'Xác nhận mật khẩu',
-  FULL_NAME: 'Họ tên',
-  AVATAR: 'Ảnh đại diện',
-  DEVICE_ID: 'Mã thiết bị',
-  SESSION_ID: 'Mã phiên đăng nhập',
-  IDENTIFIER: 'Định danh (Email/SĐT)',
-  OTP_CODE: 'Mã xác thực (OTP)',
-  CHANNEL: 'Kênh gửi',
+  PHONE: 'Phone number',
+  PASSWORD: 'Password',
+  CURRENT_PASSWORD: 'Current password',
+  NEW_PASSWORD: 'New password',
+  CONFIRM_PASSWORD: 'Confirm password',
+  FULL_NAME: 'Full name',
+  AVATAR: 'Avatar',
+  DEVICE_ID: 'Device ID',
+  SESSION_ID: 'Session ID',
+  IDENTIFIER: 'Identifier (Email/Phone)',
+  OTP_CODE: 'Verification code (OTP)',
+  CHANNEL: 'Delivery channel',
   TOKEN: 'Token',
-  REFRESH_TOKEN: 'Token Refresh',
+  REFRESH_TOKEN: 'Refresh Token',
 
-  // --- COURSE (Chuẩn bị cho Phase sau) ---
-  TITLE: 'Tiêu đề',
-  DESCRIPTION: 'Mô tả',
-  PRICE: 'Giá bán',
-  THUMBNAIL: 'Ảnh bìa',
+  // --- COURSE (Phase 2) ---
+  TITLE: 'Title',
+  DESCRIPTION: 'Description',
+  PRICE: 'Price',
+  THUMBNAIL: 'Thumbnail',
 
   // --- GENERAL ---
   ID: 'ID',
-  STATUS: 'Trạng thái',
+  STATUS: 'Status',
 } as const;
 
 export type FieldName = (typeof FIELDS)[keyof typeof FIELDS];

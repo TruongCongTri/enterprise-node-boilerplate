@@ -20,11 +20,11 @@ export const ENDPOINTS = {
   },
   PUBLIC: {
     CATEGORIES: '/categories',
-    COURSES: '/courses',
-    COURSE_DETAIL: '/courses/:slug', // Chi tiết khóa học cho khách
-    COURSE_REVIEWS: '/courses/:slug/reviews', // Xem review public
-    INSTRUCTORS: '/instructors',
-    INSTRUCTOR_DETAIL: '/instructors/:id', // Xem profile giảng viên
+    PRODUCTS: '/products',
+    PRODUCT_DETAIL: '/products/:slug', // Product detail by slug (SEO-friendly)
+    PRODUCT_REVIEWS: '/products/:slug/reviews', // View public reviews
+    SELLERS: '/sellers',
+    SELLER_DETAIL: '/sellers/:id', // View seller profile
     WEBHOOK_PAYMENT: '/payments/webhook',
   },
   USER: {
@@ -33,20 +33,20 @@ export const ENDPOINTS = {
     AVATAR: '/avatar',
     PASSWORD: '/password',
     SESSIONS: '/sessions',
-    EMAIL_CHANGE_REQUEST: '/request-email-change', // BỔ SUNG: Rào cản 3 tài liệu Auth
+    EMAIL_CHANGE_REQUEST: '/request-email-change',
   },
   ADMIN: {
     BASE: '/admin',
     USERS: '/users',
-    USER_SESSIONS: '/users/:id/sessions', // BỔ SUNG: Chức năng "Đá văng" user
+    USER_SESSIONS: '/users/:id/sessions',
     COURSES: '/courses',
     CATEGORIES: '/categories',
     ORDERS: '/orders',
-    ORDER_REFUND: '/orders/:id/refund', // BỔ SUNG: Nghiệp vụ hoàn tiền
-    ORDER_SYNC: '/orders/:id/query-payment-status', // BỔ SUNG: Rào cản 3 tài liệu Payment
+    ORDER_REFUND: '/orders/:id/refund',
+    ORDER_SYNC: '/orders/:id/query-payment-status',
     VOUCHERS: '/vouchers',
     SYSTEM: '/system',
     SYSTEM_HEALTH: '/system/health',
-    FORBIDDEN_WORDS: '/system/forbidden-words', // BỔ SUNG: Quản lý từ cấm
+    FORBIDDEN_WORDS: '/system/forbidden-words',
   },
 } as const;

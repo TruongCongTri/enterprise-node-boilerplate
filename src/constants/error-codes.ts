@@ -1,5 +1,5 @@
 export const ERROR_CODES = {
-  // Mã lỗi dùng chung cho toàn bộ hệ thống
+  // Error codes that are generic and can be used across all modules
   COMMON: {
     INVALID_INPUT: 'INVALID_INPUT',
     FORBIDDEN: 'FORBIDDEN',
@@ -22,7 +22,7 @@ export const ERROR_CODES = {
     GATEWAY_REJECTED: 'GATEWAY_REJECTED',
   },
 
-  // LỖI ĐẶC THÙ NGHIỆP VỤ (Theo Module)
+  // Error codes specific to certain modules
   AUTH: {
     EMAIL_EXISTS: 'EMAIL_EXISTS',
     ROLE_NOT_FOUND: 'ROLE_NOT_FOUND',
@@ -47,12 +47,13 @@ export const ERROR_CODES = {
     PASSWORD_MUST_BE_DIFFERENT: 'PASSWORD_MUST_BE_DIFFERENT',
   },
 
-  // VÍ DỤ TƯƠNG LAI:
-  // COURSE: { COURSE_NOT_PUBLISHED: 'COURSE_NOT_PUBLISHED' }
+  // Future installments:
+  // PRODUCT: { PRODUCT_NOT_PUBLISHED: 'PRODUCT_NOT_PUBLISHED' }
 } as const;
 
 // TRÍCH XUẤT TYPE TỰ ĐỘNG:
 // Bất kỳ mã lỗi nào được thêm vào cấu trúc trên đều sẽ tự động thuộc type ErrorCode này.
+
 export type ErrorCode =
   | (typeof ERROR_CODES.AUTH)[keyof typeof ERROR_CODES.AUTH]
   | (typeof ERROR_CODES.COMMON)[keyof typeof ERROR_CODES.COMMON]
