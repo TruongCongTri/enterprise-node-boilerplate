@@ -10,11 +10,18 @@ export class {{pascalCase name}}Repository extends BaseRepository<Prisma.{{pasca
   }
 
   /**
-   * example method: create a new {{pascalCase name}} record
+   * Create a new {{pascalCase name}} record
    */
   public async create(data: Create{{pascalCase name}}DTO) {
     return await prisma.{{camelCase name}}.create({
       data,
     });
+  }
+
+  /**
+   * Update a {{pascalCase name}} record by ID
+   */
+  public async updateById(id: string, data: Update{{pascalCase name}}DTO) {
+    return await super.update(id, data);
   }
 }

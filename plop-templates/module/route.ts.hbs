@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { {{pascalCase name}}Controller } from './{{dashCase name}}.controller';
 import { validate } from '@/middlewares/validate.middleware';
-import { create{{pascalCase name}}Schema } from './{{dashCase name}}.schema';
+import { create{{pascalCase name}}Schema, update{{pascalCase name}}Schema } from './{{dashCase name}}.schema';
 import { ENDPOINTS } from '@/constants/endpoints';
 
 export class {{pascalCase name}}Route {
@@ -19,8 +19,8 @@ export class {{pascalCase name}}Route {
   }
 
   private initializeRoutes() {
-    // TODO: Định nghĩa hằng số ENDPOINTS trong src/constants/endpoints.ts
-    // TODO: Khai báo Route này vào file cấu hình tổng (ví dụ: src/modules/index.route.ts)
+    // TODO: Define the ENDPOINTS constant in src/constants/endpoints.ts
+    // TODO: Declare this route in the main configuration file (e.g., src/modules/index.route.ts)
 
     // [POST] CREATE NEW {{pascalCase name}}
     this.router.post(
@@ -29,10 +29,29 @@ export class {{pascalCase name}}Route {
       this.{{camelCase name}}Controller.create
     );
 
-    // [GET] GET DETAILS OF {{pascalCase name}} BY ID
+    // [GET] GET ALL {{pascalCase name}}
+    this.router.get(
+      '/', // Recommend: ENDPOINTS.{{constantCase name}}.GET_ALL
+      this.{{camelCase name}}Controller.getAll
+    );
+
+    // [GET] GET DETAIL OF {{pascalCase name}} BY ID
     this.router.get(
       '/:id', // Recommend: ENDPOINTS.{{constantCase name}}.DETAIL
       this.{{camelCase name}}Controller.getDetail
+    );
+
+    // [PATCH] UPDATE {{pascalCase name}} BY ID
+    this.router.patch(
+      '/:id', // Recommend: ENDPOINTS.{{constantCase name}}.UPDATE
+      validate(update{{pascalCase name}}Schema),
+      this.{{camelCase name}}Controller.update
+    );
+
+    // [DELETE] DELETE {{pascalCase name}} BY ID
+    this.router.delete(
+      '/:id', // Recommend: ENDPOINTS.{{constantCase name}}.DELETE
+      this.{{camelCase name}}Controller.delete
     );
   }
 }
