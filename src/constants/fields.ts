@@ -1,6 +1,22 @@
-// Defines ALL field names used for UI labels and validation messages
+/**
+ * @file fields.ts
+ * @description Registry of all field names used in the system.
+ * Used primarily for consistent UI labels in validation messages.
+ */
 export const FIELDS = {
-  // --- AUTH & USER ---
+  // --- SERVER ---
+  DB: 'DATABASE_URL',
+  CLIENT: 'CLIENT_URL',
+
+  /* --- 1. GENERAL & INFRASTRUCTURE --- */
+  ID: 'ID',
+  SLUG: 'Slug',
+  STATUS: 'Status',
+  CREATED_AT: 'Created at',
+  UPDATED_AT: 'Updated at',
+  DELETED_AT: 'Deleted at',
+
+  /* --- 2. AUTHENTICATION & USER --- */
   EMAIL: 'Email',
   PHONE: 'Phone number',
   PASSWORD: 'Password',
@@ -17,15 +33,16 @@ export const FIELDS = {
   TOKEN: 'Token',
   REFRESH_TOKEN: 'Refresh Token',
 
-  // --- COURSE (Phase 2) ---
+  /* --- 4. EXAMPLE MODULE --- */
   TITLE: 'Title',
   DESCRIPTION: 'Description',
   PRICE: 'Price',
   THUMBNAIL: 'Thumbnail',
-
-  // --- GENERAL ---
-  ID: 'ID',
-  STATUS: 'Status',
+  CATEGORY: 'Category',
+  SELLER: 'Seller',
+  INSTRUCTOR: 'Instructor',
+  MIN_PRICE: 'Minimum price',
+  MAX_PRICE: 'Maximum price',
 } as const;
 
 export type FieldName = (typeof FIELDS)[keyof typeof FIELDS];

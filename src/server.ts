@@ -1,50 +1,48 @@
+/**
+ * @file server.ts
+ * @description Application bootstrap and server entry point.
+ * Ensures infrastructure (Database) is ready before accepting incoming HTTP traffic.
+ * @module Server
+ */
 import { prisma } from './common/configs/prisma';
 import { env } from './common/configs/env';
 import app from './app';
 
-// Hàm kiểm tra kết nối Database
+/**
+ * @function checkDatabaseConnection
+ * @description Verifies that the Prisma client can establish a secure connection to the database.
+ * Exits the process with code 1 if the connection fails.
+ */
 const checkDatabaseConnection = async () => {
   try {
-    // Thử ép Prisma kết nối đến DB (Dùng URL trong .env)
     await prisma.$connect();
-    console.log('✅ [Database]: Kết nối đến PostgreSQL thành công!');
+    console.log('[Database]: Connected successfully!');
   } catch (error) {
-    console.error('❌ [Database]: Kết nối thất bại. Lỗi:', error);
-    // Nếu không có DB, bắt buộc phải tắt Server ngay lập tức (Fail-fast)
+    console.error('[Database]: Failed to connect. Error:', error);
     process.exit(1);
   }
 };
 
+/**
+ * @function startServer
+ * @description Orchestrates the startup sequence: DB check -> HTTP listener.
+ */
 const startServer = async () => {
   try {
-    // 1. Chờ kết nối DB thành công trước
     await checkDatabaseConnection();
 
     const port = parseInt(env.PORT, 10);
 
     app.listen(port, () => {
       console.log(`=================================`);
-      console.log(`🚀 API Server đang chạy tại: http://localhost:${port}`);
-      console.log(`🛡️  Chấp nhận kết nối từ: ${env.CLIENT_URL}`);
+      console.log(`API Server is running at: http://localhost:${port}`);
+      console.log(`Accepting connections from: ${env.CLIENT_URL}`);
       console.log(`=================================`);
     });
   } catch (error) {
-    console.error('Lỗi khởi động server:', error);
+    console.error('Error starting server:', error);
     process.exit(1);
   }
 };
 
 startServer();
-
-// // Lắng nghe sự kiện tắt Server (Ctrl+C hoặc hệ thống yêu cầu tắt)
-// process.on('SIGINT', async () => {
-//   console.log('⏳ Đang ngắt kết nối Database...');
-//   await prisma.$disconnect();
-//   console.log('🛑 [Database]: Đã ngắt kết nối PostgreSQL an toàn.');
-//   process.exit(0);
-// });
-
-// process.on('SIGTERM', async () => {
-//   await prisma.$disconnect();
-//   process.exit(0);
-// });

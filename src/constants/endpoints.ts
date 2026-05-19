@@ -1,6 +1,13 @@
+/**
+ * @file endpoints.ts
+ * @description Registry of all API routes.
+ * Prevents hardcoding URLs in controllers, services, or test suites.
+ */
+
 export const API_VERSION = '/api/v1';
 
 export const ENDPOINTS = {
+  /* --- Authentication Module --- */
   AUTH: {
     BASE: '/auth',
     REGISTER: '/register',
@@ -18,6 +25,8 @@ export const ENDPOINTS = {
     REVOKE_SESSION: '/sessions/:sessionId',
     REVOKE_OTHER_SESSIONS: '/sessions/others',
   },
+
+  /* --- Example Endpoints --- */
   PUBLIC: {
     CATEGORIES: '/categories',
     PRODUCTS: '/products',
